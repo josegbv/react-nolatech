@@ -1,7 +1,7 @@
 {
   "name": "nolatech",
   "private": true,
-  "homepage": "https://josegbv.github.io/react-nolatech",
+  "proxy": "https://api.coresignal.com",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
