@@ -31,4 +31,4 @@
 13) Para los formularios se uso Formik y para las validacion Yup
 
 
-<h3> La web esta desplegada en netlify -> https://react-nolatech.netlify.app/login</h3>
+<h3> La web esta desplegada en netlify -> https://react-nolatech.netlify.app</h3>
