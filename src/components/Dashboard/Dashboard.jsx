@@ -3,7 +3,7 @@ import { Container, Typography, Box, Grid, Divider, Tooltip as MuiTooltip } from
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import './Dashboard.css'; // Asegúrate de que este archivo contenga las clases personalizadas
+import './Dashboard.css';
 
 const evaluations = [
   { monthYear: 'Jan 2023', successful: 30, unsuccessful: 10 },

@@ -21,20 +21,20 @@ import NotificationBadge from '../Notification/Notification';
 // Estilos personalizados
 const useStyles = makeStyles(() => ({
   link: {
-    color: 'white', // Mantiene las letras blancas
+    color: 'white', 
     textDecoration: 'none',
   },
   button: {
-    color: 'white', // Letras blancas por defecto
+    color: 'white', 
     '&:hover': {
-      backgroundColor: '#135a9e', // Color de fondo al pasar el cursor
+      backgroundColor: '#135a9e', 
     },
   },
   selectedButton: {
-    backgroundColor: '#135a9e', // Fondo azul oscuro para el botón seleccionado
-    color: 'white', // Mantiene las letras blancas
+    backgroundColor: '#135a9e', 
+    color: 'white', 
     '&:hover': {
-      backgroundColor: '#104a8c', // Fondo más oscuro al pasar el cursor sobre el botón seleccionado
+      backgroundColor: '#104a8c', 
     },
   },
 }));
@@ -47,7 +47,7 @@ const Navbar = ({ onLogout }) => {
 
   const handleLinkClick = (link) => {
     setSelectedLink(link);
-    setDrawerOpen(false); // Cierra el drawer al seleccionar un link
+    setDrawerOpen(false); 
   };
 
   const toggleDrawer = (open) => () => {
@@ -98,7 +98,7 @@ const Navbar = ({ onLogout }) => {
           <Typography variant="h6" >
             Sistema de Evaluación
           </Typography>
-          <NotificationBadge notifications={['Notificación 1', 'Notificación 2']} />
+          <NotificationBadge notifications={['Evaluacion UX/UI pendiente para el 20 agosto', 'Evaluacion Back end pendiente para el 25 agosto']} />
         </Box>
 
 
