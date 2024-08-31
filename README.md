@@ -1,4 +1,4 @@
-# react-nolatech 
+# React-nolatech 
 
 <h2>Sistema de evaluacion 360</h2>
 
