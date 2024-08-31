@@ -101,8 +101,13 @@ const EmployeeSearch = () => {
   );
 
   return (
-    <Container>
+    <Container className="container" maxWidth="xl">
+      <Typography variant="h5" gutterBottom>
+        Perfil de empleado
+      </Typography>
+   
       <TextField
+        
         label="Buscar empleado"
         variant="outlined"
         fullWidth
@@ -110,6 +115,7 @@ const EmployeeSearch = () => {
         value={searchTerm}
         onChange={handleSearchChange}
       />
+     
       {paginatedEmployees.map((employee) => (
         <EmployeeProfile key={employee.id} employee={employee} />
       ))}
@@ -127,4 +133,5 @@ const EmployeeSearch = () => {
   );
 };
 
-export default EmployeeSearch;
+
+export default React.memo(EmployeeSearch);

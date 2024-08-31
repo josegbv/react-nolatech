@@ -5,3 +5,23 @@
   .chart {
     margin-top: 20px;
   }
+
+  .mui-calendar {
+  width: 90%;
+  margin-top: 16px;
+  .react-calendar__tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 52px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+  .react-calendar__tile--active {
+    background-color: #1976d2;
+    color: white;
+  }
+  .react-calendar__tile:hover {
+    background-color: #e0e0e0;
+  }
+}

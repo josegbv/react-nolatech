@@ -1,60 +1,50 @@
-
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Dashboard from './components/Dashboard/Dashboard';
-import EmployeeProfile from './components/EmployeeProfile/EmployeeProfile';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import useAuth from './hooks/useAuth';
+import ProtectedRoute from './components/ProtectedRoute';
 import EvaluationForm from './components/EvaluationForm/EvaluationForm';
-import EvaluationResults from './components/EvaluationResult/EvaluationResults';
 import Login from './components/Login/Login';
 import Navbar from './components/Navbar/Navbar';
-
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { useState } from 'react';
 import Administration from './components/Administration/Administration';
+import { AuthProvider } from './contexts/AuthContext';
 
 const theme = createTheme();
 
+// Lazy load components
+const Dashboard = lazy(() => import('./components/Dashboard/Dashboard'));
+const EvaluationResults = lazy(() => import('./components/EvaluationResult/EvaluationResults'));
+const EmployeeProfile = lazy(() => import('./components/EmployeeProfile/EmployeeProfile'));
 
 function App() {
- 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const isAdmin = true;
-
-  const handleLogin = () => {
-    setIsAuthenticated(true);
-  };
-
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-  };
-
-
+  const { isAuthenticated, userRole, login, logout } = useAuth();
 
   return (
     <ThemeProvider theme={theme}>
-    <Router>
-      {isAuthenticated && <Navbar onLogout={handleLogout} />}
-      <Routes>
-        {!isAuthenticated ? (
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        ) : (
-          <>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/employee-profile" element={<EmployeeProfile />} />
-            <Route path="/evaluation-form" element={<EvaluationForm />} />
-            <Route path="/evaluation-results" element={<EvaluationResults />} />
-            <Route
-              path="/Administration"
-              element={isAdmin ? <Administration /> : <Navigate to="/login" />}
-            />
-            <Route path="*" element={<Navigate to="/dashboard" />} />
-          </>
-        )}
-        <Route path="*" element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} />} />
-      </Routes>
-    </Router>
-  </ThemeProvider>
-)
-
+      <Router>
+        {isAuthenticated && <Navbar onLogout={logout} />}
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/login" element={!isAuthenticated ? <Login onLogin={login} /> : <Navigate to="/dashboard" />} />
+            <Route path="/dashboard" element={<ProtectedRoute component={Dashboard} />} />
+            <Route path="/employee-profile" element={<ProtectedRoute component={EmployeeProfile} />} />
+            <Route path="/evaluation-form" element={<ProtectedRoute component={EvaluationForm} />} />
+            <Route path="/evaluation-results" element={<ProtectedRoute component={EvaluationResults} />} />
+            {userRole === 'admin' && (
+              <Route path="/administration" element={<ProtectedRoute component={Administration} requiredRole="admin" />} />
+            )}
+            <Route path="*" element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} />} />
+          </Routes>
+        </Suspense>
+      </Router>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default function Root() {
+  return (
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  );
+}
