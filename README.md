@@ -28,7 +28,7 @@
 
 12) Se creo un Hook personalizado "useAuth" y crearon componentes reutilizables como "SearchBar" 
 
-13) Para los formulariose uso Formik y para las validacion Yup
+13) Para los formularios se uso Formik y para las validacion Yup
 
 
 <h3> La web esta desplegada en netlify -> https://react-nolatech.netlify.app/login</h3>
