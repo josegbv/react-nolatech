@@ -1,21 +1,9 @@
 import React, { useState } from 'react';
-import { Container, Typography, Box, Grid, Tooltip as MuiTooltip, Divider } from '@mui/material';
+import { Container, Typography, Box, Grid, Divider, Tooltip as MuiTooltip } from '@mui/material';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip as RechartsTooltip,
-  Legend,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-} from 'recharts';
-import './Dashboard.css';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import './Dashboard.css'; // Asegúrate de que este archivo contenga las clases personalizadas
 
 const evaluations = [
   { monthYear: 'Jan 2023', successful: 30, unsuccessful: 10 },
@@ -41,7 +29,14 @@ const data = [
   { name: 'Scrum Master', value: 5 },
 ];
 
-const COLORS = ['#1976d2', '#ffeb3b', '#4caf50', '#f44336', '#e0e0e0', '#ff8042'];
+const COLORS = [
+  '#1976d2',
+  '#ffeb3b',
+  '#4caf50',
+  '#f44336',
+  '#e0e0e0',
+  '#ff8042',
+];
 
 const pendingEvaluations = [
   { name: 'Front End', value: 3, date: '2023-09-01', time: '10:00 AM' },
@@ -82,7 +77,7 @@ const Dashboard = () => {
   };
 
   return (
-    <Container className="container" maxWidth="xl">
+    <Container maxWidth="xl">
       <Typography variant="h5" gutterBottom>
         Dashboard
       </Typography>
@@ -93,7 +88,10 @@ const Dashboard = () => {
               Evaluaciones Generales en el año
             </Typography>
             <ResponsiveContainer width="100%" height={400}>
-              <BarChart data={evaluations} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+              <BarChart
+                data={evaluations}
+                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="monthYear" />
                 <YAxis />
@@ -119,9 +117,7 @@ const Dashboard = () => {
                   data={data}
                   cx="50%"
                   cy="50%"
-                  labelLine={false}
-                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                  outerRadius="80%" // Usar porcentaje para el outerRadius
+                  outerRadius="80%"
                   fill="#8884d8"
                   dataKey="value"
                 >
@@ -130,7 +126,11 @@ const Dashboard = () => {
                   ))}
                 </Pie>
                 <RechartsTooltip />
-                <Legend />
+                <Legend
+                  layout="horizontal"
+                  align="center"
+                  verticalAlign="bottom"
+                />
               </PieChart>
             </ResponsiveContainer>
           </Box>
@@ -141,7 +141,6 @@ const Dashboard = () => {
         <Typography variant="h6" component="h2" gutterBottom textAlign="center">
           Evaluaciones Pendientes
         </Typography>
-
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
             <ResponsiveContainer width="100%" height={400}>
@@ -161,7 +160,10 @@ const Dashboard = () => {
           </Grid>
           <Grid item xs={12} md={6}>
             <Box display="flex" justifyContent="center" width="100%">
-              <Calendar tileContent={tileContent} className="mui-calendar" />
+              <Calendar
+                tileContent={tileContent}
+                className="mui-calendar"
+              />
             </Box>
           </Grid>
         </Grid>
