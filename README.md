@@ -1,6 +1,6 @@
-# react-nolatech
+# react-nolatech 
 
-<h2>Sistema de evaluacion 360 Desarrollado en React</h2>
+<h2>Sistema de evaluacion 360</h2>
 
 1) Para ingresar debes colocar 1 de los 2 usuarios permitidos a continuacion: ( usuario = user clave: user123 )  o ( usuario = admin clave: admin123 )
 
