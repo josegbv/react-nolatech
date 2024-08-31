@@ -93,12 +93,14 @@ const Navbar = ({ onLogout }) => {
         >
           <MenuIcon />
         </IconButton>
+         
+        <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+          <Typography variant="h6" >
+            Sistema de Evaluación
+          </Typography>
+          <NotificationBadge notifications={['Notificación 1', 'Notificación 2']} />
+        </Box>
 
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          Sistema de Evaluación
-        </Typography>
-
-        <NotificationBadge notifications={['Notificación 1', 'Notificación 2']} />
 
         {/* Menú completo visible solo en pantallas grandes */}
         <Box sx={{ display: { xs: 'none', sm: 'flex' } }}> 
