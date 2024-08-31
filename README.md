@@ -8,7 +8,7 @@
 
 3) Se aplico react memo a la seccion de "perfiles de empleados" para mejorar el render
 
-3) Se utilizo context api como manejador de esta para comunicar la autenticacion y roles principalmente
+3) Se utilizo context api como manejador de estado para comunicar la autenticacion y roles principalmente
 
 4) Se utilizo la libreria rechart para las graficas estadisticas
 
