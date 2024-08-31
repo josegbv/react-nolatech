@@ -41,14 +41,7 @@ const data = [
   { name: 'Scrum Master', value: 5 },
 ];
 
-const COLORS = [
-  '#1976d2',
-  '#ffeb3b',
-  '#4caf50',
-  '#f44336',
-  '#e0e0e0',
-  '#ff8042',
-];
+const COLORS = ['#1976d2', '#ffeb3b', '#4caf50', '#f44336', '#e0e0e0', '#ff8042'];
 
 const pendingEvaluations = [
   { name: 'Front End', value: 3, date: '2023-09-01', time: '10:00 AM' },
@@ -93,40 +86,21 @@ const Dashboard = () => {
       <Typography variant="h5" gutterBottom>
         Dashboard
       </Typography>
-      <Grid container justifyContent="space-around" alignItems="center">
-        <Grid item size={6} lg={5} xs={12} md={5}>
+      <Grid container justifyContent="space-around" alignItems="center" spacing={2}>
+        <Grid item lg={5} xs={12} md={5}>
           <Box className="chart" height="100%">
-            <Typography
-              variant="h6"
-              component="h2"
-              gutterBottom
-              justifyContent="center"
-              textAlign="center"
-            >
+            <Typography variant="h6" component="h2" gutterBottom textAlign="center">
               Evaluaciones Generales en el año
             </Typography>
             <ResponsiveContainer width="100%" height={400}>
-              <BarChart
-                data={evaluations}
-                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-              >
+              <BarChart data={evaluations} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="monthYear" />
                 <YAxis />
                 <RechartsTooltip />
                 <Legend />
-                <Bar
-                  dataKey="successful"
-                  stackId="a"
-                  fill="#82ca9d"
-                  name="Exitosas"
-                />
-                <Bar
-                  dataKey="unsuccessful"
-                  stackId="a"
-                  fill="#ff7f7f"
-                  name="No exitosas"
-                />
+                <Bar dataKey="successful" stackId="a" fill="#82ca9d" name="Exitosas" />
+                <Bar dataKey="unsuccessful" stackId="a" fill="#ff7f7f" name="No exitosas" />
               </BarChart>
             </ResponsiveContainer>
           </Box>
@@ -134,15 +108,9 @@ const Dashboard = () => {
 
         <Divider orientation="vertical" flexItem />
 
-        <Grid item size={6} lg={5} xs={12} md={5}>
+        <Grid item lg={5} xs={12} md={5}>
           <Box className="chart" height="100%">
-            <Typography
-              variant="h6"
-              component="h2"
-              gutterBottom
-              justifyContent="center"
-              textAlign="center"
-            >
+            <Typography variant="h6" component="h2" gutterBottom textAlign="center">
               Perfiles Registrados por Rol
             </Typography>
             <ResponsiveContainer width="100%" height={400}>
@@ -152,18 +120,13 @@ const Dashboard = () => {
                   cx="50%"
                   cy="50%"
                   labelLine={false}
-                  label={({ name, percent }) =>
-                    `${name}: ${(percent * 100).toFixed(0)}%`
-                  }
-                  outerRadius={150}
+                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                  outerRadius="80%" // Usar porcentaje para el outerRadius
                   fill="#8884d8"
                   dataKey="value"
                 >
                   {data.map((entry, index) => (
-                    <Cell
-                      key={`cell-${index}`}
-                      fill={COLORS[index % COLORS.length]}
-                    />
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
                 <RechartsTooltip />
@@ -175,13 +138,7 @@ const Dashboard = () => {
       </Grid>
 
       <Box p={5}>
-        <Typography
-          variant="h6"
-          component="h2"
-          gutterBottom
-          justifyContent="center"
-          textAlign="center"
-        >
+        <Typography variant="h6" component="h2" gutterBottom textAlign="center">
           Evaluaciones Pendientes
         </Typography>
 
@@ -204,10 +161,7 @@ const Dashboard = () => {
           </Grid>
           <Grid item xs={12} md={6}>
             <Box display="flex" justifyContent="center" width="100%">
-              <Calendar
-                tileContent={tileContent}
-                className="mui-calendar"
-              />
+              <Calendar tileContent={tileContent} className="mui-calendar" />
             </Box>
           </Grid>
         </Grid>
