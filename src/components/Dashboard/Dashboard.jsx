@@ -78,7 +78,7 @@ const Dashboard = () => {
 
   return (
     <Container maxWidth="xl">
-      <Typography variant="h5" gutterBottom>
+      <Typography className="container" variant="h5" gutterBottom>
         Dashboard
       </Typography>
       <Grid container justifyContent="space-around" alignItems="center" spacing={2}>
